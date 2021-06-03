@@ -24,7 +24,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, Elsonic_no_mas_perrro, 79, 0)
+        `, Elsonic_no_mas_perrro, 92, 0)
 })
 let reflexion: Sprite = null
 let Elsonic_no_mas_perrro: Sprite = null
