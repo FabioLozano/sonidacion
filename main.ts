@@ -1,8 +1,31 @@
 namespace SpriteKind {
     export const Reflector = SpriteKind.create()
+    export const Refractioner = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     game.over(false, effects.dissolve)
+})
+sprites.onOverlap(SpriteKind.Refractioner, SpriteKind.Projectile, function (sprite, otherSprite) {
+    otherSprite.vx = 0 + otherSprite.vx
+    reflexion.setVelocity(-34, 0)
+    reflexion.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . 9 . . . . . . 
+        . . . . . . . . 9 . . . . . . . 
+        . . . . . . . 9 9 9 9 9 . . . . 
+        . . . . . . . . 9 . . . . . . . 
+        . . . . . . . . . 9 . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Elsonic_no_mas_perrro.vy == 0) {
@@ -11,6 +34,24 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Reflector, SpriteKind.Projectile, function (sprite, otherSprite) {
     otherSprite.vx = 0 - otherSprite.vx
+    reflexion.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . 5 . . . . . . . . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . 5 5 5 5 5 5 5 5 . . . . . . 
+        . . . 5 . . . . . . . . . . . . 
+        . . . . 5 . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     reflexion = sprites.createProjectileFromSprite(img`
@@ -19,12 +60,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . 7 . . . . . . . . . 
-        . . . . . . . 7 . . . . . . . . 
-        . 7 . 7 7 7 7 7 7 . . . . . . . 
-        . . 7 7 . . . 7 . . . . . . . . 
-        . . . . . . 7 . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
+        . . . . . . . . 5 . . . . . . . 
+        . . . . . . . . . 5 . . . . . . 
+        . . . 5 5 5 5 5 5 5 5 . . . . . 
+        . . . . . . . . . 5 . . . . . . 
+        . . . . . . . . 5 . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -33,6 +74,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `, Elsonic_no_mas_perrro, 92, 0)
 })
 let reflexion: Sprite = null
+let Slime: Sprite = null
 let Elsonic_no_mas_perrro: Sprite = null
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -206,3 +248,25 @@ let Solido = sprites.create(img`
     ....cccccccc....
     `, SpriteKind.Reflector)
 Solido.setPosition(160, 88)
+for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
+    Slime = sprites.create(img`
+        . . . . . 7 7 . . . . . . . . . 
+        . . . . 7 7 d 7 . . . . . . . . 
+        . . . . 7 d d 7 7 . . . . . . . 
+        . . . 7 7 d d d 7 7 . . . . . . 
+        . . . 7 d d d d d 7 7 . . . . . 
+        . . . 7 d e e d d d 7 7 . . . . 
+        . . 7 7 d e e e d d d 7 . . . . 
+        . . 7 d e e e e e d d 7 . . . . 
+        . . 7 d e e e e e d d 7 . . . . 
+        . . 7 d e e e e e d d 7 . . . . 
+        . . 7 d e e e e d d d 7 . . . . 
+        . . 7 d d e e d d d d 7 . . . . 
+        . . 7 d d d d d d d d 7 . . . . 
+        . . 7 7 d d d d d d 7 7 . . . . 
+        . . . 7 7 d d d d 7 7 . . . . . 
+        . . . . 7 7 7 7 7 7 . . . . . . 
+        `, SpriteKind.Refractioner)
+    tiles.placeOnTile(Slime, value)
+    tiles.setTileAt(value, assets.tile`transparency16`)
+}
