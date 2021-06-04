@@ -1,5 +1,6 @@
 namespace SpriteKind {
     export const Reflector = SpriteKind.create()
+    export const Info = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     game.over(false, effects.dissolve)
@@ -32,7 +33,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         `, Elsonic_no_mas_perrro, 92, 0)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Info, function (sprite, otherSprite) {
+    game.showLongText("Fifita", DialogLayout.Top)
+    otherSprite.destroy()
+})
 let reflexion: Sprite = null
+let Flor: Sprite = null
 let Elsonic_no_mas_perrro: Sprite = null
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -174,6 +180,7 @@ Elsonic_no_mas_perrro = sprites.create(img`
     . . . . f f f f f f f f f f . . 
     . . . . . f f . . . f f f . . . 
     `, SpriteKind.Player)
+Elsonic_no_mas_perrro.setPosition(0, 0)
 Elsonic_no_mas_perrro.setStayInScreen(true)
 info.setLife(5)
 controller.moveSprite(Elsonic_no_mas_perrro, 75, 0)
@@ -206,3 +213,25 @@ let Solido = sprites.create(img`
     ....cccccccc....
     `, SpriteKind.Reflector)
 Solido.setPosition(160, 88)
+for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
+    Flor = sprites.create(img`
+        . . . . . . . . 
+        . . . . . . . . 
+        . . . . . . . . 
+        . . . . . . . . 
+        . b b d d b b . 
+        b 1 1 3 3 1 1 b 
+        b 1 3 5 5 3 1 b 
+        b d 3 5 5 3 d b 
+        c 1 1 d d 1 1 c 
+        c d 1 d d 1 d c 
+        . c c 7 6 c c . 
+        . . 6 7 6 . . . 
+        . . 6 6 8 8 8 6 
+        . . 6 8 7 7 7 6 
+        . . 8 7 7 7 6 . 
+        . . 8 8 8 6 . . 
+        `, SpriteKind.Info)
+    tiles.placeOnTile(Flor, value)
+    tiles.setTileAt(value, assets.tile`transparency16`)
+}
