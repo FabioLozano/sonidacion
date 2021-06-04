@@ -237,7 +237,7 @@ for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
     tiles.placeOnTile(Flor, value)
     tiles.setTileAt(value, assets.tile`transparency16`)
 }
-for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
+for (let value of tiles.getTilesByType(assets.tile`myTile2`)) {
     Slime = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -255,7 +255,7 @@ for (let value of tiles.getTilesByType(assets.tile`myTile1`)) {
         . 7 d d d d d d d 7 . . . . . . 
         . 7 7 d d d d d 7 7 . . . . . . 
         . . 7 7 7 7 7 7 7 . . . . . . . 
-        `, SpriteKind.Refractor)
+        `, SpriteKind.Reflector)
     tiles.placeOnTile(Slime, value)
     tiles.setTileAt(value, assets.tile`transparency16`)
 }
