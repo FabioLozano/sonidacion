@@ -1,5 +1,5 @@
 {
-    "name": "Sonidación",
+    "name": "The sound game",
     "description": "",
     "dependencies": {
         "device": "*"
