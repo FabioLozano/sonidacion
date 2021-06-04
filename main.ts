@@ -66,7 +66,7 @@ sprites.onOverlap(SpriteKind.Reflector, SpriteKind.Projectile, function (sprite,
         `)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Guia, function (sprite, otherSprite) {
-    game.showLongText("Saltar y disparar a la tumba para ver el fenómeno.", DialogLayout.Top)
+    game.showLongText("Saltar y disparar las flechas de sonido a la tumba para ver el fenómeno.", DialogLayout.Top)
     otherSprite.destroy()
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -105,7 +105,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Info_C, function (sprite, otherS
     otherSprite.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Info_C_2, function (sprite, otherSprite) {
-    game.showLongText("Esperando al flabio.", DialogLayout.Top)
+    game.showLongText("Refracción sucede cuando la onda se encuentra con un medio diferente de esta, la reacción es cambiar de dirección y disminuir la velocidad de la onda, además el medio absorberá parte de la energía de la onda.", DialogLayout.Top)
     otherSprite.destroy()
 })
 let reflexion: Sprite = null
