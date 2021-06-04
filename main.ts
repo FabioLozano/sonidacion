@@ -39,7 +39,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Info, function (sprite, otherSpr
     otherSprite.destroy()
 })
 let reflexion: Sprite = null
-let Slime: Sprite = null
 let Flor: Sprite = null
 let Elsonic_no_mas_perrro: Sprite = null
 scene.setBackgroundImage(img`
@@ -235,27 +234,5 @@ for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
         . . 8 8 8 6 . . 
         `, SpriteKind.Info)
     tiles.placeOnTile(Flor, value)
-    tiles.setTileAt(value, assets.tile`transparency16`)
-}
-for (let value of tiles.getTilesByType(assets.tile`myTile2`)) {
-    Slime = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . 7 7 7 . . . . . . . . . 
-        . . . 7 7 d 7 . . . . . . . . . 
-        . . . 7 d d 7 7 . . . . . . . . 
-        . . . 7 d d d 7 7 . . . . . . . 
-        . . . 7 d d d d 7 . . . . . . . 
-        . . 7 7 d e d d 7 . . . . . . . 
-        . . 7 d e e e d 7 7 . . . . . . 
-        . . 7 d e e e d d 7 . . . . . . 
-        . 7 7 d e e e d d 7 . . . . . . 
-        . 7 d d d e e d d 7 . . . . . . 
-        . 7 d d d d d d d 7 . . . . . . 
-        . 7 7 d d d d d 7 7 . . . . . . 
-        . . 7 7 7 7 7 7 7 . . . . . . . 
-        `, SpriteKind.Reflector)
-    tiles.placeOnTile(Slime, value)
     tiles.setTileAt(value, assets.tile`transparency16`)
 }
