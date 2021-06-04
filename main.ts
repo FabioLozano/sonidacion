@@ -10,8 +10,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 sprites.onOverlap(SpriteKind.Reflector, SpriteKind.Projectile, function (sprite, otherSprite) {
-    let mySprite: Sprite = null
-    mySprite.x = 0
+    otherSprite.vx = 0 - otherSprite.vx
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     reflexion = sprites.createProjectileFromSprite(img`
